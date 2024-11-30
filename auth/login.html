@@ -1,0 +1,552 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    
+    <style>
+
+/* sign in FORM */
+#logreg-forms{
+    width:412px;
+    margin:10vh auto;
+    background-color:#f3f3f3;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+#logreg-forms form {
+    width: 100%;
+    max-width: 410px;
+    padding: 15px;
+    margin: auto;
+}
+#logreg-forms .form-control {
+    position: relative;
+    box-sizing: border-box;
+    height: auto;
+    padding: 10px;
+    font-size: 16px;
+}
+#logreg-forms .form-control:focus { z-index: 2; }
+#logreg-forms .form-signin input[type="email"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+#logreg-forms .form-signin input[type="password"] {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+#logreg-forms .social-login{
+    width:390px;
+    margin:0 auto;
+    margin-bottom: 14px;
+}
+#logreg-forms .social-btn{
+    font-weight: 100;
+    color:white;
+    width:190px;
+    font-size: 0.9rem;
+}
+
+#logreg-forms a{
+    display: block;
+    padding-top:10px;
+    color:lightseagreen;
+}
+
+#logreg-form .lines{
+    width:200px;
+    border:1px solid red;
+}
+
+
+#logreg-forms button[type="submit"]{ margin-top:10px; }
+
+#logreg-forms .facebook-btn{  background-color:#3C589C; }
+
+#logreg-forms .google-btn{ background-color: #DF4B3B; }
+
+#logreg-forms .form-reset, #logreg-forms .form-signup{ display: none; }
+
+#logreg-forms .form-signup .social-btn{ width:210px; }
+
+#logreg-forms .form-signup input { margin-bottom: 2px;}
+
+.form-signup .social-login{
+    width:210px !important;
+    margin: 0 auto;
+}
+
+/* Mobile */
+
+@media screen and (max-width:500px){
+    #logreg-forms{
+        width:300px;
+    }
+    
+    #logreg-forms  .social-login{
+        width:200px;
+        margin:0 auto;
+        margin-bottom: 10px;
+    }
+    #logreg-forms  .social-btn{
+        font-size: 1.3rem;
+        font-weight: 100;
+        color:white;
+        width:200px;
+        height: 56px;
+        
+    }
+    #logreg-forms .social-btn:nth-child(1){
+        margin-bottom: 5px;
+    }
+    #logreg-forms .social-btn span{
+        display: none;
+    }
+    #logreg-forms  .facebook-btn:after{
+        content:'Facebook';
+    }
+  
+    #logreg-forms  .google-btn:after{
+        content:'Google+';
+    }
+    
+}
+    </style>
+
+    <title>Bootstrap 4 Login/Register Form</title>
+</head>
+<body>
+    <div id="logreg-forms">
+        <form class="form-signin" accept="#">
+            <h1 class="h3 mb-3 font-weight-normal" style="text-align: center"> Sign in</h1>
+            <div class="social-login">
+                <button class="btn facebook-btn social-btn" type="button" id="facebooklogin"><span><i class="fab fa-facebook-f"></i> Sign in with Facebook</span> </button>
+                <button class="btn google-btn social-btn" type="button" id="googleLogin"><span><i class="fab fa-google-plus-g"></i> Sign in with Google+</span> </button>
+            </div>
+            <p style="text-align:center"> OR  </p>
+            <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
+            <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
+            
+            <button class="btn btn-success btn-block" id="loginbtn" type="button"><i class="fas fa-sign-in-alt"></i> Sign in</button>
+            <a href="#" id="forgot_pswd" class="text-secondary" style="text-align: center; display: block; margin-top: 10px;">Forgot Password?</a>
+
+            
+            <hr>
+            <!-- <p>Don't have an account!</p>  -->
+            <button class="btn btn-primary btn-block" type="button" id="btn-signup"><i class="fas fa-user-plus"></i> Sign up New Account</button>
+            </form>
+
+            
+            
+            <form action="#" class="form-signup">
+                <div class="social-login">
+                    <button class="btn facebook-btn social-btn" type="button"><span><i class="fab fa-facebook-f"></i> Sign in with Facebook</span> </button>
+                </div>
+                <div class="social-login">
+                    <button class="btn google-btn social-btn" type="button"><span><i class="fab fa-google-plus-g"></i> Sign in with Google+</span> </button>
+                </div>
+                
+                <p style="text-align:center">OR</p>
+
+                <input type="email" id="useremail" class="form-control" placeholder="Email address" required autofocus="">
+                <input type="password" id="userpass" class="form-control" placeholder="Password" required autofocus="">
+                
+                <button class="btn btn-primary btn-block" type="button" id="signupbtn"><i class="fas fa-user-plus"></i> Sign Up</button>
+                <a href="#" id="cancel_signup"><i class="fas fa-angle-left"></i> Back</a>
+            </form>
+            
+            <form class="form-reset" id="resetPasswordForm">
+                <input type="email" id="resetEmail" class="form-control" placeholder="Nhập email của bạn" required="" autofocus="">
+                <button class="btn btn-primary btn-block" type="button" id="resetbtn">Reset Password</button>
+                <a href="#" id="cancel_reset"><i class="fas fa-angle-left"></i> Back</a>
+            </form>
+
+
+            <br>
+            
+    </div>
+    <script>
+    function toggleResetPswd(e){
+    e.preventDefault();
+    $('#logreg-forms .form-signin').toggle() // display:block or none
+    $('#logreg-forms .form-reset').toggle() // display:block or none
+}
+
+function toggleSignUp(e){
+    e.preventDefault();
+    $('#logreg-forms .form-signin').toggle(); // display:block or none
+    $('#logreg-forms .form-signup').toggle(); // display:block or none
+}
+
+$(()=>{
+    // Login Register Form
+    $('#logreg-forms #forgot_pswd').click(toggleResetPswd);
+    $('#logreg-forms #cancel_reset').click(toggleResetPswd);
+    $('#logreg-forms #btn-signup').click(toggleSignUp);
+    $('#logreg-forms #cancel_signup').click(toggleSignUp);
+});
+
+</script>
+
+    </p>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-analytics.js";
+        import { getAuth, createUserWithEmailAndPassword, sendEmailVerification, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, FacebookAuthProvider, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
+        
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+          apiKey: "AIzaSyB1JCecFimcT25tPUQzwYWo9XJJhMp7sD0",
+          authDomain: "fir-tutorial-3457c.firebaseapp.com",
+          projectId: "fir-tutorial-3457c",
+          storageBucket: "fir-tutorial-3457c.firebasestorage.app",
+          messagingSenderId: "405591208024",
+          appId: "1:405591208024:web:4a23f40f50d8c375895a2d",
+          measurementId: "G-5X5MYQJD43"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const auth = getAuth(app);
+
+        var signupbtn=document.getElementById("signupbtn")
+        var emailsignup=document.getElementById("useremail")
+        var passwordsignup=document.getElementById("userpass")
+
+
+
+        //=====================Signup With Email and Password=============================
+        signupbtn.onclick = async function () {
+    signupbtn.disabled = true;
+    signupbtn.textContent = "Đang đăng kí tài khoản của bạn! Vui lòng đợi";
+
+    // Kiểm tra mật khẩu
+    const password = passwordsignup.value;
+    if (!isValidPassword(password)) {
+        alert("Mật khẩu phải có ít nhất 6 ký tự, bao gồm một chữ cái viết hoa, một chữ cái viết thường và một số.");
+        signupbtn.disabled = false;
+        signupbtn.textContent = "Sign Up";
+        return; // Dừng quá trình đăng ký
+    }
+
+    try {
+        // Đăng ký tài khoản
+        const userCredential = await createUserWithEmailAndPassword(auth, emailsignup.value, password);
+        console.log("User registered:", userCredential.user);
+
+        // Gửi email xác minh
+        await sendEmailVerification(userCredential.user);
+        signupbtn.disabled = false;
+        signupbtn.textContent = "Sign Up";
+        alert("Email xác minh đã được gửi! Vui lòng kiểm tra hộp thư của bạn.");
+    } catch (error) {
+        console.error("Error during sign up:", error);
+        signupbtn.disabled = false;
+        signupbtn.textContent = "Sign Up";
+
+        // Kiểm tra loại lỗi và hiển thị thông báo chi tiết bằng tiếng Việt
+        let errorMessage = "Đã có lỗi xảy ra trong quá trình đăng ký.";
+        switch (error.code) {
+            case 'auth/invalid-email':
+                errorMessage = "Địa chỉ email không hợp lệ.";
+                break;
+            case 'auth/email-already-in-use':
+                errorMessage = "Địa chỉ email đã được sử dụng.";
+                break;
+            case 'auth/weak-password':
+                errorMessage = "Mật khẩu quá yếu.";
+                break;
+            default:
+                errorMessage = error.message || "Lỗi không xác định xảy ra.";
+        }
+        
+        alert(errorMessage);
+    }
+};
+
+// Hàm kiểm tra mật khẩu
+function isValidPassword(password) {
+    // Kiểm tra ít nhất 6 ký tự, một chữ cái viết hoa, một chữ cái viết thường và một số
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{6,}$/;
+    return passwordRegex.test(password);
+}
+
+
+//==========================End Signup With Email and Password===================================================
+  
+//===========================Sign in With Email and Password ===============================================
+var loginemail = document.getElementById("inputEmail");
+var loginpassword = document.getElementById("inputPassword");
+var loginbtn = document.getElementById("loginbtn");
+
+// Xử lý sự kiện đăng nhập
+loginbtn.onclick = async function () {
+    loginbtn.disabled = true;
+    loginbtn.textContent = "Đang Đăng Nhập, Vui Lòng Chờ...";
+
+    try {
+        // Đăng nhập bằng Email và Password
+        const userCredential = await signInWithEmailAndPassword(auth, loginemail.value, loginpassword.value);
+        console.log("Người dùng đã đăng nhập:", userCredential.user);
+
+        // Lấy accessToken từ userCredential
+        var token = userCredential.user.accessToken;
+        var provider = "email"; // Đảm bảo bạn đặt đúng provider
+        var email = loginemail.value;
+
+        if (token != null && token != undefined && token != "") {
+            sendDatatoServerPhp(email, provider, token, email);
+        }
+
+        // Đặt lại trạng thái nút
+        loginbtn.disabled = false;
+        loginbtn.textContent = "Đăng Nhập";
+
+    } catch (error) {
+        console.error("Lỗi khi đăng nhập:", error);
+
+        // Đặt lại trạng thái nút
+        loginbtn.disabled = false;
+        loginbtn.textContent = "Đăng Nhập";
+
+        // Kiểm tra mã lỗi (error.code) để hiển thị thông báo cụ thể
+        let errorMessage = "Đã có lỗi xảy ra trong quá trình đăng nhập.";
+
+        if (error.code === 'auth/invalid-credential') {
+            errorMessage = "Dữ liệu xác thực không hợp lệ. Vui lòng kiểm tra lại thông tin đăng nhập.";
+        } else if (error.code === 'auth/invalid-email') {
+            errorMessage = "Địa chỉ email không hợp lệ.";
+        } else if (error.code === 'auth/user-disabled') {
+            errorMessage = "Tài khoản của bạn đã bị vô hiệu hóa.";
+        } else if (error.code === 'auth/user-not-found') {
+            errorMessage = "Không tìm thấy tài khoản với địa chỉ email này.";
+        } else if (error.code === 'auth/wrong-password') {
+            errorMessage = "Mật khẩu không chính xác.";
+        } else if (error.code === 'auth/network-request-failed') {
+            errorMessage = "Lỗi mạng, vui lòng kiểm tra kết nối Internet.";
+        } else {
+            errorMessage = error.message || "Lỗi không xác định xảy ra.";
+        }
+
+        // Hiển thị lỗi cụ thể
+        alert(errorMessage);
+    }
+};
+
+//===========================End Sign in With Email and Password===================================================
+//===========================Saving Login Details in My Server Using AJAX===================================================
+function sendDatatoServerPhp(email, provider, token, username) {
+    var xhr = new XMLHttpRequest();
+
+    xhr.addEventListener("readystatechange", function () {
+        if (this.readyState === 4) {
+            console.log(this.responseText);
+            if (this.responseText == "Login Successful") {
+                location = 'home.php'; // Chuyển hướng đến trang home sau khi đăng nhập thành công
+            } else if (this.responseText == "Please Verify Your Email to Get Login") {
+                alert("Vui lòng xác minh email để đăng nhập.");
+            } else if (this.responseText == "Invalid credentials") {
+                alert("Thông tin đăng nhập không hợp lệ. Vui lòng kiểm tra lại.");
+            } else {
+                alert("Đã có lỗi xảy ra khi đăng nhập.");
+            }
+        }
+    });
+
+    // Gửi yêu cầu POST đến máy chủ PHP
+    xhr.open("POST", "http://localhost/firebase/auth/login.php?email=" + email + "&provider=" + provider + "&username=" + username + "&token=" + token);
+
+    xhr.send();
+}
+
+//===========================End Saving Details in My Server===================================================
+
+//==============================Login With Google=========================================
+var googleLogin = document.getElementById("googleLogin");
+
+googleLogin.onclick = async function () {
+    // Tạo Google Provider
+    const googleProvider = new GoogleAuthProvider();
+
+    // Thêm tham số để buộc người dùng chọn tài khoản
+    googleProvider.setCustomParameters({
+        prompt: 'select_account' // Luôn hiển thị chọn tài khoản
+    });
+
+    try {
+        // Hiển thị popup đăng nhập Google
+        const response = await signInWithPopup(auth, googleProvider);
+        const user = response.user;
+
+        // Lấy thông tin người dùng
+        const token = await user.getIdToken(); // Lấy ID Token từ Firebase (bảo mật hơn)
+        const email = user.email;
+        const displayName = user.displayName;
+        const loginProvider = "google";
+
+        if (token && email) {
+            // Gửi thông tin người dùng tới server PHP
+            sendDatatoServerPhp(email, loginProvider, token, displayName);
+        }
+
+        // Đăng nhập thành công
+        console.log("Đăng nhập Google thành công:", user);
+        alert("Đăng nhập thành công!");
+        location.href = 'home.php'; // Chuyển hướng tới trang chủ
+
+    } catch (error) {
+        // Xử lý lỗi khi đăng nhập
+        console.error("Lỗi khi đăng nhập Google:", error);
+
+        let errorMessage;
+        switch (error.code) {
+            case 'auth/popup-closed-by-user':
+                errorMessage = "Bạn đã đóng cửa sổ đăng nhập trước khi hoàn thành.";
+                break;
+            case 'auth/cancelled-popup-request':
+                errorMessage = "Yêu cầu popup bị hủy. Vui lòng thử lại.";
+                break;
+            case 'auth/network-request-failed':
+                errorMessage = "Kết nối mạng gặp sự cố. Vui lòng kiểm tra internet.";
+                break;
+            default:
+                errorMessage = error.message || "Đã xảy ra lỗi không xác định.";
+        }
+
+        alert(errorMessage);
+    }
+};
+
+//==============================End Login With Google=========================================
+
+//==============================Login With Facebook=========================================
+var facebooklogin = document.getElementById("facebooklogin");
+
+facebooklogin.onclick = async function () {
+    const facebookProvider = new FacebookAuthProvider();
+    facebookProvider.addScope('email'); // Thêm quyền email
+
+    try {
+        // Đăng nhập và hiển thị popup chọn tài khoản Facebook
+        const response = await signInWithPopup(auth, facebookProvider);
+
+        var userobj = response.user;
+        var token = userobj.accessToken;
+        var email = userobj.email;
+        var loginProvider = "facebook";
+
+        // Kiểm tra nếu token hợp lệ
+        if (token && email) {
+            await sendDatatoServerPhp(email, loginProvider, token, userobj.displayName);
+        }
+
+        // Đăng nhập thành công, hiển thị thông báo
+        console.log("Đăng nhập thành công!");
+        alert("Đăng nhập thành công!");
+        location = 'home.php'; // Chuyển hướng sau khi đăng nhập thành công
+
+    } catch (error) {
+        console.error("Lỗi khi đăng nhập:", error);  // Ghi lại lỗi
+
+        let errorMessage = "Đã có lỗi xảy ra khi đăng nhập.";
+
+        // Thêm xử lý lỗi cụ thể
+        if (error.code === 'auth/popup-closed-by-user') {
+            errorMessage = "Popup bị đóng trước khi hoàn thành đăng nhập.";
+        } else if (error.code === 'auth/cancelled-popup-request') {
+            errorMessage = "Yêu cầu popup bị hủy.";
+        } else if (error.code === 'auth/network-request-failed') {
+            errorMessage = "Lỗi kết nối mạng, vui lòng kiểm tra lại kết nối.";
+        } else {
+            errorMessage = error.message || "Lỗi không xác định.";
+        }
+
+        alert(errorMessage);  // Thông báo cho người dùng
+    }
+};
+
+//==============================End Login With Facebook=========================================
+
+//==============================Forgot Password=========================================
+$('#resetbtn').click(function(e) {
+    e.preventDefault();
+    
+    var resetEmail = $('#resetEmail').val(); // Lấy giá trị email từ form
+    
+    // Kiểm tra định dạng email
+    var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (resetEmail === "") {
+        alert("Vui lòng nhập địa chỉ email của bạn.");
+        return;
+    } else if (!emailPattern.test(resetEmail)) {
+        alert("Địa chỉ email không đúng định dạng. Vui lòng thử lại.");
+        return;
+    }
+
+    // Firebase - Gửi yêu cầu reset mật khẩu
+    const auth = getAuth();
+    sendPasswordResetEmail(auth, resetEmail)
+        .then(() => {
+            // Hiển thị thông báo thành công
+            alert('Email đặt lại mật khẩu đã được gửi! Vui lòng kiểm tra hộp thư của bạn.');
+            // Quay lại form đăng nhập
+            $('#logreg-forms .form-reset').toggle();
+            $('#logreg-forms .form-signin').toggle();
+        })
+        .catch((error) => {
+            // Xử lý lỗi
+            console.error(error.message);
+            alert('Lỗi: ' + error.message);
+        });
+});
+
+// Kiểm tra điều kiện khi đặt mật khẩu mới
+$('#newPasswordBtn').click(function(e) {
+    e.preventDefault();
+    
+    var newPassword = $('#newPassword').val(); // Lấy mật khẩu mới từ form
+    
+    // Kiểm tra độ dài và điều kiện mật khẩu
+    if (newPassword.length < 8) {
+        alert("Mật khẩu phải có ít nhất 8 ký tự.");
+        return;
+    } else if (!/[A-Z]/.test(newPassword)) {
+        alert("Mật khẩu phải chứa ít nhất 1 chữ cái viết hoa.");
+        return;
+    } else if (!/[0-9]/.test(newPassword)) {
+        alert("Mật khẩu phải chứa ít nhất 1 chữ số.");
+        return;
+    } else if (!/[!@#$%^&*]/.test(newPassword)) {
+        alert("Mật khẩu phải chứa ít nhất 1 ký tự đặc biệt (!@#$%^&*).");
+        return;
+    }
+
+    // Xử lý cập nhật mật khẩu mới với Firebase (nếu cần)
+    alert("Mật khẩu mới hợp lệ. Bạn có thể tiếp tục.");
+});
+
+//==============================End Forgot Password=========================================
+
+
+      </script>
+</body>
+</html>
